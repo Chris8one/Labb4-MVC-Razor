@@ -1,0 +1,27 @@
+﻿@model BookListViewModel
+
+
+<div class="mt-2 col-sm-4 col-la-4 col-md-4">
+    <img src="@Model.Book.BookCoverImage" alt="Book cover image" class="image-size" />
+    <div class="caption">
+        <h4>@Model.Book.BookTitle</h4>
+        <h5>@Model.Book.BookAuthor</h5>
+        <p>@Model.Book.BookDescription</p>
+        <ul class="pull-right">
+            <li>Pages: @Model.Book.NoOfPages</li>
+            <li>ISBN: @Model.Book.BookISBN</li>
+            <li>Language: @Model.Book.BookLanguage</li>
+            <li>Release Date: @Model.Book.PublicationDate</li>
+        </ul>
+
+        @if (@Model.Book.BookIsCheckedOut == true)
+        {
+            <p>No copies of this book is available right now</p>
+            <p>The book will return: @Model.Book.EndDateLending.Date</p>
+        }
+        else if (@Model.Book.BookIsCheckedOut == false)
+        {
+            <a asp-controller="BorrowBook" asp-action="BorrowBook" asp-route-id="@Model.Book.BookId" class="btn btn-primary">Borrow</a>
+        }
+    </div>
+</div>

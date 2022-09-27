@@ -1,0 +1,31 @@
+﻿@model CustomerViewModel
+
+
+<h1 class="display-4">Borrow Book</h1>
+<hr class="hr-grad-title" />
+<br />
+
+<div class="row">
+    <div class="col-6">
+        <div class="card">
+            <div class="card-header">
+                <h5>Delete Customer</h5>
+            </div>
+            <div class="card-body">
+                <form asp-controller="Customer" asp-action="DeleteCustomer" method="post">
+                    <div class="mb-3">
+                        <label class="form-label">Choose a customer to delete</label>
+                        <select asp-for="CustomerVm.CustomerName" class="form-control">
+                            @foreach (var customer in Model.Customers)
+                            {
+                                <option value="@customer.CustomerName">@customer.CustomerName</option>
+                            }
+                        </select>
+                        <button type="submit" class="btn btn-primary mt-2">Delete</button>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer"></div>
+        </div>
+    </div>
+</div>

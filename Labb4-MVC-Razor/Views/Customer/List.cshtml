@@ -1,0 +1,18 @@
+﻿@model CustomerListViewModel
+
+<h1 class="display-4">Customers</h1>
+<hr class="hr-grad-title" />
+<br />
+
+@foreach (var customer in Model.Customers)
+{
+    <div>
+        <h4>@customer.CustomerName</h4>
+        <h6>Id #@customer.CustomerId</h6>
+        <h5>@customer.CustomerEmail</h5>
+        <h5>@customer.CustomerPhone</h5>
+        <h5><a asp-controller="Customer" asp-action="BorrowedBooks" asp-route-id="@customer.CustomerId">@customer.CustomerName 's list of borrowed books</a></h5>
+        <hr class="hr-grad-details"/>
+    </div>
+    <br />
+}
